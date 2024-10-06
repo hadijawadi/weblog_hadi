@@ -1,0 +1,67 @@
+{%include 'includes/pages/header.html'%} {%block content%}
+
+<div class="container">
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home'%}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Oldest_Posts</li>
+  </ol>
+</nav>
+  {% for d in data%} 
+  <div class='mt-2 pt-3'>
+  {% if d.thumbnail %} 
+  <img
+    src="{{d.thumbnail.url}}"
+    alt="{{d.title}}"
+    class="img-fluid"
+    id="thumbnail_images"
+  />
+   {%else%}
+  {% endif %} 
+  </div>
+
+  <h1 class="fw-bold text-dark">{{d.title}}</h1>
+  <P>Created at : <span>{{d.created_at}}</span></p>
+  <p>{{d.body}}</p>
+  <div class="share_to_social_medias">
+    <div class="d-grid gap-4 d-md-block">
+ <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#share">
+  Share 
+</button>    </div>
+  </div>
+  {%endfor%}
+</div>
+
+
+{% comment %} modal is here  {% endcomment %}
+
+ </div>
+    {% comment %} model  {% endcomment %}
+    <div class="modal" tabindex="-1" id='share'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Share to Social Medias </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+  <a href="https://www.linkedin.com/shareArticle?url={{ share_url }}&title={{ post.title }}" target="_blank">
+        Share on LinkedIn
+    </a><br>
+   <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" target="_blank">
+        Share on Facebook
+    </a><br>
+
+    <!-- Twitter Share -->
+    <a href="https://twitter.com/share?url={{ share_url }}&text={{ post.title }}" target="_blank">
+        Share on Twitter
+    </a><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+{%endblock content%}
