@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from first_app import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -12,6 +12,7 @@ urlpatterns = [
     path('', views.home_view, name='home'),
     path('oldest', views.show_oldest, name='oldest'),
     path('share/<int:pk>', views.post_detail, name='share'),
+    path('contact/', include('contact_app.urls')),
 ]
 
 if settings.DEBUG:

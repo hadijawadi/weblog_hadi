@@ -1,0 +1,29 @@
+{%include 'includes/pages/header.html'%} 
+
+
+{% block content %}
+
+<div class='container py-5'>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home'%}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Contact_Me</li>
+  </ol>
+</nav> {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+<form method = 'post'>
+{%csrf_token%}
+{{form.as_p}}
+<div class='d-grid'>
+<button class = 'btn btn-md btn-success btn-block' type'submit'>Send</button>
+<div>
+<div>
+{% endblock content %}
+
+

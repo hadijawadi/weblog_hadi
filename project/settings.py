@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     # MY APPS
 
     'first_app',
+    'contact_app',
 ]
 
 MIDDLEWARE = [

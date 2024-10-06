@@ -23,9 +23,16 @@
 
   <body>
     <header class="container">
+
       <nav class="nav justify-content-center bg-dark">
-        <a class="nav-link active text-white" href="{%url 'home'%}" aria-current="page">Home</a>
-        <a class="nav-link text-white" href="{% url 'oldest'%}">Oldest</a>
+        <a
+          class="nav-link active text-white"
+          href="{%url 'home'%}"
+          aria-current="page"
+          >Home</a
+        >
+        <a class="nav-link text-white" href="{% url 'oldest'%}">Oldest_blogs</a>
+        <a class="nav-link text-white" href="{% url 'contact_app:contact'%}">Contact</a>
       </nav>
     </header>
     <main class="container">{%block content%} {%endblock content%}</main>

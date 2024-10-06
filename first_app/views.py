@@ -2,6 +2,8 @@ from django.shortcuts import render
 from first_app.models import CreatePost
 from django.shortcuts import render, get_object_or_404
 from .models import CreatePost
+
+
 # here just get the last one of the post and show the index _page 
 def home_view(request):
     data = CreatePost.objects.all().order_by('-created_at')[:1]
@@ -23,11 +25,7 @@ def show_oldest(request):
 
     return render(request,'oldest.html',context)
 
-
-
-
-
-
+# for sharing to social medias 
 def post_detail(request, pk):
     post = get_object_or_404(CreatePost, pk=pk)
     share_url = request.build_absolute_uri()
@@ -36,5 +34,7 @@ def post_detail(request, pk):
         'share_url': share_url,
     }
     return render(request, 'post_detail.html', context)
+
+
 
 
